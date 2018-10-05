@@ -4,7 +4,9 @@ import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SQLContext;
 
-public class ParquetDemo {
+public class sparksql {
+
+    public static String url = "jdbc:hive2://headnodehost:10002/;transportMode=http";
 
     public static void main(String[] args) {
 
@@ -15,7 +17,7 @@ public class ParquetDemo {
         JavaSparkContext sc = new JavaSparkContext(conf);
         SQLContext sqlContext = new SQLContext(sc.sc());
 
-        sqlContext.sql("use ssb");
+        sqlContext.sql("use ssb_10");
         sqlContext.sql("show tables").show();
         //sqlContext.sql("SELECT COUNT(*) FROM p_lineorder").show();
         /*
