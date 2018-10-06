@@ -11,6 +11,8 @@ object ParquetDemo {
     val conf = new SparkConf().setAppName("JSONDataSource")
     val sc = new SparkContext(conf)
     val sqlContext = new SQLContext(sc)
+    sqlContext.setConf("spark.sql.orc.filterPushdown", "true")
+    sqlContext.setConf("spark.sql.orc.impl", "native")
     val hiveContext = new org.apache.spark.sql.hive.HiveContext(sc)
 
     sqlContext.sql("use ssb_20")
