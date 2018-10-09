@@ -11,6 +11,9 @@ object ORCDemo {
     val sqlContext = new SQLContext(sc)
     sqlContext.setConf("spark.sql.orc.filterPushdown", "true")
     sqlContext.setConf("spark.sql.orc.impl", "native")
+    sqlContext.setConf("orc.create.index", "true")
+    sqlContext.setConf("orc.bloom.filter.columns", "c_region,s_region,c_city,s_city")
+    sqlContext.setConf("orc.bloom.filter.fpp", "0.05")
     val hiveContext = new org.apache.spark.sql.hive.HiveContext(sc)
 
     sqlContext.sql("use ssb_20")

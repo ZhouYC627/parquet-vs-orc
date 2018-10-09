@@ -19,14 +19,14 @@ object ParquetDemo {
     sqlContext.sql("show tables").show()
 
     val customer = hiveContext.table("customer")
-    customer.write.mode("overwrite").parquet("customer.parquet")
     val dates = hiveContext.table("dates")
-    dates.write.mode("overwrite").parquet("dates.parquet")
     val supplier = hiveContext.table("supplier")
-    supplier.write.mode("overwrite").parquet("supplier.parquet")
     val part = hiveContext.table("part")
-    part.write.mode("overwrite").parquet("part.parquet")
     val p_lineorder = hiveContext.table("p_lineorder")
+    customer.write.mode("overwrite").parquet("customer.parquet")
+    dates.write.mode("overwrite").parquet("dates.parquet")
+    supplier.write.mode("overwrite").parquet("supplier.parquet")
+    part.write.mode("overwrite").parquet("part.parquet")
     p_lineorder.write.mode("overwrite").parquet("p_lineorder.parquet")
 
     spark.read.parquet("part.parquet").createOrReplaceTempView("part_parquet")
